@@ -1,0 +1,36 @@
+<ion-header>
+  <ion-navbar color="primary">
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>Crear publicación</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+
+  <h3 style="text-align: center;"> ¿Desea agregar etiquetas a su publicación? </h3>
+  <p style="text-align: justify;"> Las etiquetas permitirán que su publicación sea vista por más usuarios! </p>
+
+  <h5> ¿Cómo escribir una etiqueta? </h5>
+  <p> • Debe tener un hashtag. </p>
+  <p> • La etiqueta debe tener entre 1 a 20 caracteres. </p>
+  <p> • La etiqueta no puede contener caracteres especiales (vocales con tilde, letra 'ñ', etc). </p>
+  <p> Ejemplo: #TermasDeChillan </p>
+
+  <ion-item>
+    <ion-input type="text" [(ngModel)]="etiqueta" placeholder="Escriba una etiqueta"></ion-input>
+  </ion-item>
+
+  <ion-grid class="center">
+
+    <ion-row>
+      <button ion-button round (click)="crearEtiqueta()">Enviar</button>
+    </ion-row>
+
+    <ion-row>
+      <button ion-button round (click)="irHome()">Terminar</button>
+    </ion-row>
+
+  </ion-grid>
+</ion-content>

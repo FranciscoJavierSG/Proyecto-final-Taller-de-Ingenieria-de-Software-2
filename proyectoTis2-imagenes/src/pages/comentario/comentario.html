@@ -1,0 +1,51 @@
+<div>
+  <ion-header>
+    <ion-navbar color="primary">
+      <button ion-button menuToggle>
+        <ion-icon name="menu"></ion-icon>
+      </button>
+      <ion-title *ngFor="let pub of publicacion">Comentarios de {{pub.nombre_publicacion}}
+      </ion-title>
+    </ion-navbar>
+  </ion-header>
+</div>
+
+<ion-content padding>
+
+  <ng-container *ngIf="comentario?.length; else nocom">
+
+    <div *ngIf="comentario" style="padding-top: 55px;">
+      <ion-card *ngFor="let com of comentario; let i = index">
+        <ion-card-content>
+
+          <!-- Usuario -->
+          <b> {{com.id_usuario}} </b>
+
+          <!-- Comentario -->
+          <p> {{com.comentario}} </p>
+
+          <b style="font-weight: normal;"> ({{com.likes}}) </b> <a (click)="darLike(com.id_comentario, i)">Me gusta</a> <b>/</b>
+          <a (click)="darDislike(com.id_comentario, i)"> Ya no me gusta</a>
+
+        </ion-card-content>
+      </ion-card>
+    </div>
+
+  </ng-container>
+
+  <ng-template #nocom>
+    <br>
+    <br>
+    <br>
+    <h3>Esta publicación no tiene comentarios.</h3>
+  </ng-template>
+
+</ion-content>
+
+<div *ngFor="let pub of publicacion">
+  <ion-fab right bottom>
+    <button ion-fab color="primary" (click)="irCrearComentario(pub.id_publicacion)">
+      <ion-icon name="add"></ion-icon>
+    </button>
+  </ion-fab>
+</div>

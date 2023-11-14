@@ -1,0 +1,132 @@
+<ion-header>
+  <ion-navbar color="primary">
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title *ngFor="let pub of publicacion">{{pub.nombre_publicacion}}</ion-title>
+
+    <ion-buttons end>
+      <button ion-button icon-only>
+        <ion-icon name="eye" style="zoom:0.8;" *ngFor="let pub of publicacion"> {{pub.visitas}}</ion-icon>
+      </button>
+    </ion-buttons>
+
+  </ion-navbar>
+</ion-header>
+
+<ion-content *ngFor="let pub of publicacion">
+
+  <img src="../assets/imgs/paine.jpg">
+
+  <!-- Mapa -->
+  <ion-card (click)="irMapa(pub.direccion)" style="zoom:0.8;">
+    <ion-item>
+      <ion-icon name="md-map" item-start large></ion-icon>
+      <ion-label position="floating">{{pub.direccion}}</ion-label>
+    </ion-item>
+  </ion-card>
+
+  <!-- Descripción de la publicación -->
+  <ion-grid padding style="padding-bottom: 0px; padding-top: 0px;">
+    <ion-row>
+      <h3 style="padding-top: 14px; margin: 0px;">Descripción</h3>
+    </ion-row>
+    <ion-row>
+      <p style="text-align: justify; margin-bottom: 7px;">{{pub.descripcion_publicacion}}</p>
+    </ion-row>
+  </ion-grid>
+
+  <hr>
+
+  <!-- Opiniones (comentarios y reseñas) y calificación de la publicación-->
+  <ion-grid padding style="padding-bottom: 0px; padding-top: 0px;">
+    <ion-row>
+      <h3 style="padding-top: 7px; padding-bottom: 7px; margin: 0px;">Opiniones y valoraciones</h3>
+    </ion-row>
+    <ion-row>
+      <ion-col>
+        <ion-icon name="md-star" item-start large></ion-icon> Calificación: {{pub.calificacion_publicacion}}/10
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col>
+        <button ion-button (click)="irComentario(pub.id_publicacion)">Ver comentarios</button>
+      </ion-col>
+      <ion-col>
+        <button ion-button (click)="irReview(pub.id_publicacion)">Ver reseñas</button>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+
+  <hr>
+
+  <!-- Datos de contacto de la publicación -->
+  <ion-grid padding style="padding-bottom: 0px; padding-top: 0px;">
+    <ion-row>
+      <h3 style="padding-top: 7px; padding-bottom: 12px; margin: 0px;">Datos de contacto</h3>
+    </ion-row>
+    <ion-row>
+      <ion-list no-margin>
+        <ion-item>
+          <ion-icon name="md-contact" item-start></ion-icon>
+          Representante: {{pub.nombre_usuario}}
+        </ion-item>
+      </ion-list>
+    </ion-row>
+    <ion-row>
+      <ion-list no-margin>
+        <ion-item>
+          <ion-icon name="md-call" item-start></ion-icon>
+          Telefono contacto: +56 {{pub.telefono_contacto}}
+        </ion-item>
+      </ion-list>
+    </ion-row>
+  </ion-grid>
+
+  <!-- Etiquetas/Hashtags de la publicación -->
+  <ion-grid padding style="padding-bottom: 0px; padding-top: 0px;" *ngIf="etiqueta?.length;">
+    <hr>
+    <ion-row>
+      <h3 style="padding-top: 7px; padding-bottom: 7px; margin: 0px;">Etiquetas:</h3>
+    </ion-row>
+
+    <div class="a">
+      <p *ngFor="let et of etiqueta" style="text-align: justify; margin-bottom: 7px;">{{et.etiqueta}}</p>
+    </div>
+  </ion-grid>
+
+  <!-- Publicaciones similares -->
+
+  <!--
+  <ion-grid padding>
+    <ion-row>
+      <h3>También te podría interesar...</h3>
+    </ion-row>
+    <ion-card *ngFor="let simp of similarPub" (click)="verPub(simp.id_publicacion)">
+      <ion-card-content>
+
+        <b> {{simp.nombre_publicacion}} </b>
+
+        <p> Ubicación: {{simp.direccion}} </p>
+        <p> Calificación: {{simp.calificacion_publicacion}}/10 </p>
+
+        <p> Valor: {{simp.valor_publicacion}} </p>
+
+      </ion-card-content>
+    </ion-card>
+  </ion-grid>
+
+  <hr>
+-->
+
+  <!-- Botón para borrar la publicación -->
+  <div style="text-align: center;">
+    <hr>
+    <button ion-button end round (click)="eliminarPublicacion()" style="zoom:1.2;">
+      Borrar publicacion &nbsp;
+      <ion-icon name="trash" style="zoom:1.5;"></ion-icon>
+    </button>
+  </div>
+
+  <br>
+</ion-content>

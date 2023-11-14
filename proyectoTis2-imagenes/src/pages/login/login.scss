@@ -1,0 +1,18 @@
+page-login {
+    ion-avatar *{
+        margin-top: 10vh;
+        margin-bottom: 8vh;
+    }
+
+    .bg {
+        background: linear-gradient(to bottom, hsl(186, 48%, 58%) 0%, white 170%);
+    }
+
+    a {
+        color: white;
+    }
+
+    .centrado{
+        text-align: center;
+      }
+}

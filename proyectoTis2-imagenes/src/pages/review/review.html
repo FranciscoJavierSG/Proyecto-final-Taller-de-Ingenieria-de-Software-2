@@ -1,0 +1,51 @@
+<div>
+  <ion-header>
+    <ion-navbar color="primary">
+      <button ion-button menuToggle>
+        <ion-icon name="menu"></ion-icon>
+      </button>
+      <ion-title *ngFor="let pub of publicacion">Reseñas de {{pub.nombre_publicacion}}
+      </ion-title>
+    </ion-navbar>
+  </ion-header>
+</div>
+
+<ion-content padding>
+
+  <ng-container *ngIf="review?.length; else norev">
+
+    <div *ngIf="review" style="padding-top: 55px;">
+      <ion-card *ngFor="let rev of review">
+        <ion-card-content>
+
+          <!-- Usuario -->
+          <b> {{rev.id_usuario}} </b>
+
+          <!-- Reseña -->
+          <p> {{rev.review}} </p>
+
+          <!-- Calificación -->
+          <hr>
+          <p> Calificación: {{rev.calificacion_review}}/10</p>
+
+        </ion-card-content>
+      </ion-card>
+    </div>
+
+  </ng-container>
+
+  <ng-template #norev>
+    <br>
+    <br>
+    <br>
+    <h3>Esta publicación no tiene reseñas.</h3>
+  </ng-template>
+</ion-content>
+
+<div *ngFor="let pub of publicacion">
+  <ion-fab right bottom>
+    <button ion-fab color="primary" (click)="irCrearReview(pub.id_publicacion)">
+      <ion-icon name="add"></ion-icon>
+    </button>
+  </ion-fab>
+</div>

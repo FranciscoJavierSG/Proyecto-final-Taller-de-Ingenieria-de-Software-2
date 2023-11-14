@@ -1,0 +1,28 @@
+page-publicacion {
+    ion-content {
+        background-color: hsl(187, 71%, 77%) !important;
+    }
+
+    h1 {
+        color: rgb(52, 147, 163);
+        font-weight: bold;
+    }
+
+    h3 {
+        color: rgb(52, 147, 163);
+        font-weight: bold;
+    }
+
+    h2,
+    p {
+        color: rgb(48, 48, 48);
+    }
+
+    .card {
+        background-color: #ccf8fc;
+        h2 {
+            font-weight: bold;
+        }
+    }
+
+}

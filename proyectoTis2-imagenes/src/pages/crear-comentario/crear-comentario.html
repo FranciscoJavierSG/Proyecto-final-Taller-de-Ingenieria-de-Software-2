@@ -1,0 +1,26 @@
+<ion-header>
+  <ion-navbar color="primary">
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title style="padding-right: 10px;" *ngFor="let pub of publicacion">Creando un comentario para
+      {{pub.nombre_publicacion}}
+    </ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content>
+  <form [formGroup]="datos">
+    <ion-list>
+
+      <ion-item>
+        <ion-textarea type="text" minlength="10" maxlength="1024" required autoGrow rows="5" placeholder="Escriba su comentario..." [(ngModel)]="comentario" formControlName="comentario_usuario"></ion-textarea>
+      </ion-item>
+
+      <div style="text-align: center;">
+        <button ion-button type="submit" round (click)="crearComentario()">Enviar</button>
+      </div>
+
+    </ion-list>
+  </form>
+</ion-content>

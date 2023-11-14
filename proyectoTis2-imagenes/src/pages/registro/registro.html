@@ -1,0 +1,81 @@
+<ion-header>
+  <ion-navbar color="primary">
+    <ion-title>Registro</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding center>
+
+  <div>
+    <h5>Para registrarse debe cumplir los siguientes formatos:</h5>
+    <p>• El usuario debe tener entre 5 a 20 caracteres.</p>
+    <p>• Debe ingresar su nombre real en 5 a 50 caracteres máximo.</p>
+    <p>• Su contraseña debe tener entre 5 a 30 caracteres.</p>
+    <p>• Su correo electrónico debe tener el formato de un correo electrónico. Ejemplo: CorreoDeEjemplo@gmail.com</p>
+  </div>
+
+  <div style="display: flex; justify-content: center; zoom:0.8;">
+    <ion-avatar (click)="abrirGaleria()">
+      <img src="../assets/imgs/avatarC.png" style="height:125px; margin-top: 15px; margin-bottom: 29px;">
+    </ion-avatar>
+  </div>
+
+  <form [formGroup]="datos">
+    <!--<ion-item text-center>
+      <button ion-button icon-left large (click)="abrirGaleria()">
+        <ion-icon name="images"></ion-icon>
+        Añadir fotos
+      </button>
+    </ion-item>-->
+
+    <ion-list>
+
+      <ion-item>
+        <ion-input type="text" formControlName="id_usuario" [(ngModel)]="id_usuario" ngModel required
+          placeholder="Usuario"></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-input type="text" formControlName="nombre_usuario" [(ngModel)]="nombre_usuario" ngModel required
+          placeholder="Nombre real"></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-input type="password" formControlName="contrasena" [(ngModel)]="contrasena" ngModel required
+          placeholder="Contraseña" type="password"></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-input type="email" formControlName="email_usuario" [(ngModel)]="email_usuario" ngModel required
+          placeholder="Correo"></ion-input>
+      </ion-item>
+
+      <!--<div id="LoadedImages" *ngIf="fotos">
+        <ion-item text-center *ngFor="let fot of fotos; let i = index">
+          <ion-icon name="close-circle" (click)="borrarFoto(i)"></ion-icon>
+          <img [src]="fot" class="imagenes">
+        </ion-item>
+      </div>
+      <ion-list *ngFor="let image of images">
+        <ion-item>
+          <img src={{image}} />
+        </ion-item>
+      </ion-list>-->
+      <div id="LoadedImages">
+        <ion-item text-center *ngFor="let foto of fotos; let i = index">
+          <ion-icon name="close-circle" (click)="borrarFoto(i)"></ion-icon>
+          <img src={{foto}} class="imagenes"  />
+        </ion-item>
+      </div>
+
+      <div style="padding-top: 5px; text-align: center;">
+        <button ion-button type="submit" round (click)="register()">Enviar</button>
+      </div>
+
+    </ion-list>
+
+
+
+  </form>
+
+</ion-content>

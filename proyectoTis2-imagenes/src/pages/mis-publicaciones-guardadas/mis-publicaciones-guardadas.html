@@ -1,0 +1,69 @@
+<ion-header>
+  <ion-navbar color="primary">
+    <ion-title>Publicaciones Guardadas</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+
+  <div style="text-align: center;">
+    <ion-buttons start><button ion-button end round (click)="limpiarGuardados()" style="zoom:0.9;" placeholder="asda ">
+        Borrar publicaciones guardadas &nbsp;
+        <ion-icon name="trash" style="zoom:1.5;"></ion-icon>
+      </button></ion-buttons>
+  </div>
+ 
+  <hr>
+
+  <ng-container *ngIf="publicacionesGuardadas?.length; else nopub">
+
+    <ion-card *ngFor="let pub of publicacionesGuardadas" (click)="irPublicacion(pub.id_publicacion)">
+
+      <img src="../assets/imgs/paine.jpg">
+
+      <ion-card-content>
+
+        <ion-row>
+          <ion-col col-9>
+            <p>{{pub.nombre_publicacion}}</p>
+          </ion-col>
+          <ion-col class="ion-align-self-end">
+            <p>
+              <ion-icon name="logo-usd"></ion-icon> {{pub.valor_publicacion}}
+            </p>
+          </ion-col>
+        </ion-row>
+
+        <ion-row>
+          <ion-col>
+            <p>
+              <ion-icon name="pin"></ion-icon> {{pub.direccion}}
+            </p>
+          </ion-col>
+        </ion-row>
+
+        <ion-row>
+          <ion-col>
+            <button ion-button round icon-start clear small>
+            </button>
+          </ion-col>
+          <ion-col>
+            <button ion-button icon-start clear small>
+              <ion-icon name="star"></ion-icon>
+              <p>Calificacion: {{pub.calificacion_publicacion}}/10</p>
+            </button>
+          </ion-col>
+          <ion-col align-self-center text-end>
+            <ion-icon icon-only name="eye" style="zoom:1;"> {{pub.visitas}}</ion-icon>
+          </ion-col>
+        </ion-row>
+
+      </ion-card-content>
+    </ion-card>
+  </ng-container>
+  <ng-template #nopub>
+    <h3>No tienes publicaciones guardadas.</h3>
+  </ng-template>
+
+
+</ion-content>

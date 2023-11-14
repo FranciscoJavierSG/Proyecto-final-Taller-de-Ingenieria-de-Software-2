@@ -1,0 +1,33 @@
+page-oferente-check {
+
+    .bg {
+        background: linear-gradient(to bottom, hsl(186, 48%, 58%) 0%, white 170%);
+    }
+
+    a {
+        color: white;
+    }
+
+    .centrado{
+        text-align: center;
+      }
+
+
+    ion-list {
+        margin: 10;
+        padding: 0;
+        display: block;
+        list-style-type: none;
+    }
+
+    h1, h4 ,h2{
+        color: rgb(31, 136, 155);
+        font-weight: bold;
+    }
+
+    p{
+        color:rgb(18, 108, 124)
+        
+    }
+
+}

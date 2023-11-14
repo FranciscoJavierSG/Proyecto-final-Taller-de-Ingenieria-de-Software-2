@@ -1,0 +1,114 @@
+<ion-header>
+  <ion-navbar color="primary">
+    <button ion-button menuToggle start>
+      <ion-icon name="menu" style="zoom:1.3;"></ion-icon>
+    </button>
+
+    <ion-title text-align="center">Mis Publicaciones</ion-title>
+
+  </ion-navbar>
+</ion-header>
+<ion-content padding>
+
+  <ion-row>
+    <ion-col>
+      <p style="margin-top: 8px; color: rgb(52, 147, 163); font-weight: bold;">Publicaciones encontradas: </p>
+    </ion-col>
+    <ion-col>
+      <ion-buttons end>
+        <button ion-button round icon-right (click)="irOrdenar" style="zoom:0.8;">
+          Ordenar
+          <ion-select [(ngModel)]="gaming">
+            <ion-option value="nes">Asc</ion-option>
+            <ion-option value="n64">Desc</ion-option>
+          </ion-select>
+          <ion-icon name="funnel"></ion-icon>
+        </button>
+      </ion-buttons>
+    </ion-col>
+  </ion-row>
+
+  <!-- Muestra de publicaciones -->
+  <hr>
+  <ng-container *ngIf="publicaciones?.length; else nopub">
+    <ion-card *ngFor="let pub of publicaciones">
+
+      <img src="../assets/imgs/paine.jpg">
+
+      <ion-card-content>
+
+        <ion-row>
+          <ion-col col-9>
+            <p>{{pub.nombre_publicacion}}</p>
+          </ion-col>
+          <ion-col class="ion-align-self-end">
+            <p>
+              <ion-icon name="logo-usd"></ion-icon> {{pub.valor_publicacion}}
+            </p>
+          </ion-col>
+
+        </ion-row>
+
+        <ion-row>
+          <ion-col>
+            <p>
+              <ion-icon name="pin"></ion-icon> {{pub.direccion}}
+            </p>
+          </ion-col>
+        </ion-row>
+
+        <ion-row>
+          <ion-col>
+            <button ion-button round icon-start clear small></button>
+          </ion-col>
+          <ion-col>
+            <button ion-button icon-start clear small>
+              <ion-icon name="star"></ion-icon>
+              <p>Calificación: {{pub.calificacion_publicacion}}/10</p>
+            </button>
+          </ion-col>
+          <ion-col align-self-center text-end>
+            <ion-icon icon-only name="eye" style="zoom:1;"> {{pub.visitas}}</ion-icon>
+          </ion-col>
+        </ion-row>
+
+        <ion-row>
+          <p>Estado de la publicación: </p>
+          <p style="font-weight: bold;"> {{pub.estado}}</p>
+        </ion-row>
+
+        <div style="text-align: center;">
+          <ion-row>
+            <ion-col>
+              <ion-buttons start><button ion-button end round (click)="irEliminarPublicacion(pub.id_publicacion)"
+                  style="zoom:0.75;" placeholder="Borrar">
+                  Borrar &nbsp;
+                  <ion-icon name="trash" style="zoom:1.5;"></ion-icon>
+                </button></ion-buttons>
+            </ion-col>
+
+            <ion-col>
+              <ion-buttons start><button ion-button end round (click)="irEditarPublicacion(pub.id_publicacion)"
+                  style="zoom:0.75;" placeholder="Editar">
+                  Editar &nbsp;
+                  <ion-icon name="md-create" style="zoom:1.5;"></ion-icon>
+                </button></ion-buttons>
+            </ion-col>
+
+            <ion-col>
+              <ion-buttons start><button ion-button end round (click)="irPublicacion(pub.id_publicacion)"
+                  style="zoom:0.75;" placeholder="Ver">
+                  Ver &nbsp;
+                  <ion-icon name="md-document" style="zoom:1.5;"></ion-icon>
+                </button></ion-buttons>
+            </ion-col>
+          </ion-row>
+        </div>
+      </ion-card-content>
+    </ion-card>
+  </ng-container>
+
+  <ng-template #nopub>
+    <h3>No has creado ninguna publicación.</h3>
+  </ng-template>
+</ion-content>

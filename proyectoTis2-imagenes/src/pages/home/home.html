@@ -1,0 +1,92 @@
+<ion-header>
+  <ion-navbar color="primary">
+    <button ion-button menuToggle start>
+      <ion-icon name="menu" style="zoom:1.3;"></ion-icon>
+    </button>
+
+    <ion-title text-align="center">Publicaciones</ion-title>
+
+    <ion-buttons end>
+      <button ion-button icon-only (click)="irFiltro()">
+        <ion-icon name="search" style="zoom:1.3;"></ion-icon>
+      </button>
+    </ion-buttons>
+
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+
+  <div style="text-align: center;">
+    <img src="../assets/imgs/logo_empresa1.png" style="height:70px">
+    <h4 style="text-align: center; padding-bottom: 10px; padding-top: 10px; margin: 0px;"> Los mejores atractivos
+      turísticos para visitar a lo largo del pais! </h4>
+  </div>
+  <hr>
+
+  <ion-row>
+    <ion-col>
+      <p style="margin-top: 8px; color: rgb(52, 147, 163); font-weight: bold;"> Lugares mejor valorados: </p>
+    </ion-col>
+    <ion-col>
+      <ion-buttons end style="zoom:0.8;">
+        <button ion-button round icon-right>
+          Ordenar&nbsp;
+          <ion-select interface="action-sheet" (ionChange)="ordenarPubAsc($event)">
+            <ion-option value="Asc"> Nombre Asc. </ion-option>
+            <ion-option value="Des"> Nombre Desc. </ion-option>
+            <ion-option value="MenP"> Menor Precio </ion-option>
+            <ion-option value="MayP"> Mayor Precio </ion-option>
+          </ion-select>
+          <ion-icon name="funnel"></ion-icon>
+        </button>
+      </ion-buttons>
+    </ion-col>
+  </ion-row>
+  <!-- ------------------------------ -->
+  <ion-list>
+
+    <!-- Muestra de publicaciones -->
+    <ion-card *ngFor="let pub of (publicacionesDes)" (click)="irPublicacion(pub.id_publicacion)">
+      
+      <img *ngIf="pub.base64!==null" src="{{pub.base64}}" style="height: 200px;">
+      <img *ngIf="pub.base64===null" src="../assets/imgs/paine.jpg" style="height: 200px;">
+      <ion-card-content>
+        <ion-row>
+          <ion-col col-9>
+            <p>{{pub.nombre_publicacion}}</p>
+          </ion-col>
+          <ion-col class="ion-align-self-end">
+            <p>
+              <ion-icon name="logo-usd"></ion-icon> {{pub.valor_publicacion}}
+            </p>
+          </ion-col>
+        </ion-row>
+        <ion-row>
+          <ion-col>
+            <p>
+              <ion-icon name="pin"></ion-icon> {{pub.direccion}}
+            </p>
+          </ion-col>
+        </ion-row>
+        <ion-row>
+          <ion-col>
+            <button ion-button round icon-start clear small></button>
+          </ion-col>
+          <ion-col>
+            <button ion-button icon-start clear small>
+              <ion-icon name="star"></ion-icon>
+              <p>Calificación: {{pub.calificacion_publicacion}}/10</p>
+            </button>
+          </ion-col>
+          <ion-col align-self-center text-end>
+            <ion-icon icon-only name="eye" style="zoom:1;"> {{pub.visitas}}</ion-icon>
+          </ion-col>
+        </ion-row>
+      </ion-card-content>
+    </ion-card>
+    <!-------------------->
+
+  </ion-list>
+
+</ion-content>

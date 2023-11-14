@@ -1,0 +1,42 @@
+<ion-header>
+  <ion-navbar color="primary">
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>Ingresar</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding center text-center class="bg">
+    <div style="display: flex; justify-content: center;">
+    <ion-avatar>
+      <img src="../assets/imgs/avatar.png" style="height:125px">
+    </ion-avatar>
+  </div>
+
+  <form [formGroup]="datos">
+
+    <ion-list>
+
+      <ion-item>
+        <ion-input type="text" formControlName="id_usuario" [(ngModel)]="id_usuario" ngModel required
+          placeholder="Usuario"></ion-input>
+      </ion-item>
+
+      <br>
+      <ion-item>
+
+        <ion-input type="password" formControlName="contrasena" [(ngModel)]="contrasena" ngModel required
+          placeholder="Contraseña"></ion-input>
+      </ion-item>
+
+    </ion-list>
+
+    <div style="padding-bottom: 5px;">
+      <button ion-button type="submit" full round (click)="login()">INGRESAR</button>
+    </div>
+
+    <a (click)="irRegistro()">¿No tienes cuenta?, ¡Registrate!</a>
+
+  </form>
+</ion-content>

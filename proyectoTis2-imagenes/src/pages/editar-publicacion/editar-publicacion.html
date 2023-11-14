@@ -1,0 +1,92 @@
+<ion-header>
+  <ion-navbar color="primary">
+    <ion-title *ngFor="let pub of publicacion">Editando {{pub.nombre_publicacion}}</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding center text-center>
+  <div style="display: flex; justify-content: center;">
+    <ion-avatar>
+      <img src="../assets/imgs/upload_image.png" style="height:125px">
+    </ion-avatar>
+  </div>
+
+  <br><br>
+
+  <ion-list *ngFor="let pub of publicacion">
+
+    <ion-item>
+      <ion-input type="text" [(ngModel)]="nombre" placeholder="{{pub.nombre_publicacion}}"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-input type="text" [(ngModel)]="descripcion" placeholder="{{pub.descripcion_publicacion}}"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-input type="text" [(ngModel)]="precio" placeholder="{{pub.valor_publicacion}}"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-input type="text" [(ngModel)]="telefono" placeholder="{{pub.telefono_contacto}}"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-input type="text" [(ngModel)]="correo" placeholder="{{pub.email_contacto}}"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-input type="text" [(ngModel)]="rrss" placeholder="{{pub.redes_sociales}}"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-input type="text" [(ngModel)]="ubicacion" placeholder="{{pub.direccion}}"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label style="padding-left: 8px;">Región</ion-label>
+      <ion-select id="regionID" [(ngModel)]="region" placeholder="{{pub.region_publicacion}}" #regionS
+        (ionChange)='onOptionsSelected(regionS.value)'>
+        <ion-option *ngFor="let reg of regiones" [value]="reg.codigo">{{reg.nombre}}</ion-option>
+      </ion-select>
+    </ion-item>
+
+    <ion-item>
+      <ion-label style="padding-left: 8px;">Comuna</ion-label>
+      <ion-select id="comunaID" [(ngModel)]="comuna" placeholder="{{pub.comuna_publicacion}}" #comunaS>
+        <ion-option *ngFor="let com of comunas" [value]="com.codigo">{{com.nombre}}</ion-option>
+      </ion-select>
+    </ion-item>
+
+    <ion-item>
+      <ion-label style="padding-left: 8px;">Tipo de publicación</ion-label>
+      <ion-select [(ngModel)]="tipo_publicacion" placeholder="Selecciona">
+        <ion-option [value]="producto">Producto</ion-option>
+        <ion-option [value]="servicio">Servicio</ion-option>
+        <ion-option [value]="infraestructura">Infraestructura</ion-option>
+      </ion-select>
+    </ion-item>
+
+    <ion-item>
+      <ion-label style="padding-left: 8px;">Tipo de turismo</ion-label>
+      <ion-select [(ngModel)]="tipo_turismo" placeholder="Selecciona">
+        <ion-option [value]="negocios">Negocios</ion-option>
+        <ion-option [value]="urbano">Urbano</ion-option>
+        <ion-option [value]="natural">Natural</ion-option>
+        <ion-option [value]="gastronomico">Gastronómico</ion-option>
+        <ion-option [value]="aventura">Aventura</ion-option>
+        <ion-option [value]="ecologico">Ecológico</ion-option>
+        <ion-option [value]="cultural">Cultural</ion-option>
+        <ion-option [value]="lujo">De lujo</ion-option>
+        <ion-option [value]="diversion">De diversión</ion-option>
+        <ion-option [value]="religioso">Religioso</ion-option>
+        <ion-option [value]="espacial">Espacial</ion-option>
+      </ion-select>
+    </ion-item>
+  </ion-list>
+
+  <div>
+    <button ion-button round (click)="editarPublicacion()">Editar</button>
+  </div>
+
+</ion-content>

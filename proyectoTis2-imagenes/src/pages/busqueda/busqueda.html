@@ -1,0 +1,74 @@
+<ion-header>
+  <ion-navbar color="primary">
+    <button ion-button menuToggle start>
+      <ion-icon name="menu" style="zoom:1.3;"></ion-icon>
+    </button>
+
+    <ion-title text-align="center">Búsqueda</ion-title>
+
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+
+  <ion-row>
+    <ion-col >
+      <p style="margin-top: 8px">Publicaciones encontradas: </p>
+    </ion-col>
+    <ion-col>
+      <ion-buttons end style="zoom:0.6;">
+        <button ion-button round icon-right>
+          Ordenar&nbsp;
+          <ion-select interface="action-sheet" (ionChange)="ordenarPubAsc($event)" > 
+            <ion-option value="Asc"> Nombre Asc. </ion-option>
+            <ion-option value="Des"> Nombre Desc. </ion-option>
+            <ion-option value="MenP"> Menor Precio </ion-option>
+            <ion-option value="MayP"> Mayor Precio </ion-option>
+          </ion-select>
+          <ion-icon name="funnel"></ion-icon>
+        </button>
+      </ion-buttons>
+    </ion-col>
+  </ion-row>  
+
+  <!-- Muestra de publicaciones -->
+  <hr>
+  <ion-card *ngFor="let pub of publicacionesBus" (click)="irPublicacion(pub.id_publicacion)">
+
+    <img src="../assets/imgs/paine.jpg">
+
+    <ion-card-content>
+      <ion-row>
+        <ion-col col-9>
+          <p>{{pub.nombre_publicacion}}</p>
+        </ion-col>
+        <ion-col class="ion-align-self-end">
+          <p><ion-icon name="logo-usd"></ion-icon> {{pub.valor_publicacion}}</p>
+        </ion-col>
+      </ion-row>
+      
+      <ion-row>
+        <ion-col>
+          <p><ion-icon name="pin"></ion-icon> {{pub.direccion}}</p>
+        </ion-col>
+      </ion-row>
+
+      <ion-row>
+        <ion-col>
+          <button ion-button round icon-start clear small></button>
+        </ion-col>
+        <ion-col>
+          <button ion-button icon-start clear small>
+            <ion-icon name="star"></ion-icon>
+            <p>Calificación: {{pub.calificacion_publicacion}}/10</p>
+          </button>
+        </ion-col>
+        <ion-col align-self-center text-end>
+          <ion-icon icon-only name="eye" style="zoom:1;"> {{pub.visitas}}</ion-icon>
+        </ion-col>
+      </ion-row>
+    </ion-card-content>
+  </ion-card>
+  <!-------------------------->
+
+</ion-content>

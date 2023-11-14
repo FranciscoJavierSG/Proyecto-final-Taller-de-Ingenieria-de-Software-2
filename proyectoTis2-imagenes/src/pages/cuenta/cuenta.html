@@ -1,0 +1,58 @@
+<ion-header>
+  <ion-navbar color="primary">
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>Mi Cuenta</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding center text-center>
+
+  <div style="display: flex; justify-content: center;">
+    <ion-avatar *ngFor="let fo of foto">
+      <img *ngIf="fo.base64!==null" src="{{fo.base64}}" style="height:125px">
+      <img *ngIf="fo.base64===null" src="../assets/imgs/avatar.png" style="height:125px">
+      
+    </ion-avatar>
+  </div>
+  <h1 style="display: flex; justify-content: center;" *ngFor="let cue of cuenta">{{cue.nombre_usuario}}</h1>
+
+  <button ion-button type="submit" round (click)="cerrar()">Cerrar Sesión</button>
+  <button ion-button type="submit" round (click)="Historial()">Historial</button>
+
+  <br><br>
+
+  <ion-toolbar>
+    <ion-segment>
+      <ion-segment-button value="info">
+        Información
+      </ion-segment-button>
+      <ion-segment-button (click)="PublicacionesGuardadas()">
+        Pub. guardadas
+      </ion-segment-button>
+    </ion-segment>
+  </ion-toolbar>
+
+  <ion-list *ngFor="let cue of cuenta">
+
+    <ion-item>
+      <ion-label>Usuario: {{cue.id_usuario}}</ion-label>
+      <!-- <ion-input type="text">Usuario: {{cue.id_usuario}}</ion-input> -->
+    </ion-item>
+
+    <ion-item>
+      <ion-label>Nombre: {{cue.nombre_usuario}}</ion-label>
+      <!-- <ion-input type="text"></ion-input> -->
+    </ion-item>
+
+    <ion-item style="padding-bottom: 5px;">
+      <ion-label>Email: {{cue.email_usuario}}</ion-label>
+      <!-- <ion-input type="text"></ion-input> -->
+    </ion-item>
+
+  </ion-list>
+
+  <button ion-button type="submit" round (click)="editarInfo()">Editar Información</button> 
+
+</ion-content>

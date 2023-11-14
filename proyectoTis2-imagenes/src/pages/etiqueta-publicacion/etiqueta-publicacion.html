@@ -1,0 +1,68 @@
+<ion-header>
+  <ion-navbar color="primary">
+    <ion-title>Publicaciones relacionadas</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+
+  <ion-row>
+    <ion-col>
+      <p style="margin-top: 8px">Publicaciones encontradas:</p>
+    </ion-col>
+    <ion-col>
+      <ion-buttons end>
+        <button ion-button round icon-right (click)="irOrdenar" style="zoom:0.8;">
+          Ordenar
+          <ion-select [(ngModel)]="gaming">
+            <ion-option value="nes">Asc</ion-option>
+            <ion-option value="n64">Desc</ion-option>
+          </ion-select>
+          <ion-icon name="funnel"></ion-icon>
+        </button>
+      </ion-buttons>
+    </ion-col>
+  </ion-row>
+  <hr>
+
+  <!-- Muestra de publicaciones -->
+  <ion-card *ngFor="let pub of publicaciones" (click)="irPublicacion(pub.id_publicacion)">
+
+    <img src="../assets/imgs/paine.jpg">
+
+    <ion-card-content>
+      <ion-row>
+        <ion-col col-9>
+          <p>{{pub.nombre_publicacion}}</p>
+        </ion-col>
+        <ion-col class="ion-align-self-end">
+          <p>
+            <ion-icon name="logo-usd"></ion-icon> {{pub.valor_publicacion}}
+          </p>
+        </ion-col>
+      </ion-row>
+
+      <ion-row>
+        <ion-col>
+          <p>
+            <ion-icon name="pin"></ion-icon> {{pub.direccion}}
+          </p>
+        </ion-col>
+      </ion-row>
+
+      <ion-row>
+        <ion-col>
+          <button ion-button round icon-start clear small></button>
+        </ion-col>
+        <ion-col>
+          <button ion-button icon-start clear small>
+            <ion-icon name="star"></ion-icon>
+            <p>Calificación: {{pub.calificacion_publicacion}}/10</p>
+          </button>
+        </ion-col>
+        <ion-col align-self-center text-center></ion-col>
+      </ion-row>
+    </ion-card-content>
+  </ion-card>
+
+</ion-content>

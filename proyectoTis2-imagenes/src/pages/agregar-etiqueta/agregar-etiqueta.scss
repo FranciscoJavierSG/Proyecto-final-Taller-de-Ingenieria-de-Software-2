@@ -1,0 +1,17 @@
+page-agregar-etiqueta {
+    ion-content {
+        background-color: hsl(187, 71%, 77%) !important;
+    }
+
+    ion-text {
+        text-align: center;
+    }
+
+    .center {
+        display: flex;
+        justify-content: center;
+        align-content: center;
+        align-items: center;
+        width: 50%;
+    }
+}
