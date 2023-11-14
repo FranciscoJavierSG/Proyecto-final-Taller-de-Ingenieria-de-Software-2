@@ -8,15 +8,17 @@ El proyecto consta en crear una aplicación móvil para turismo. Esto quiere dec
 Para programar la aplicación móvil se utilizó el framework Ionic 3. A continuación, se muestran instrucciones para instalar el framework:
 
 #### Paso 1
-- Asegúrese de tener *Node.js* instalado. 
-- Luego, para instalar *Ionic* y *Cordova* en su computador utilice:
+Asegúrese de tener *Node.js* instalado. 
+
+#### Paso 2
+Luego, para instalar *Ionic* y *Cordova* en su computador utilice:
 
 ``` 
 $ npm install -g ionic cordova
 ```
 
-#### Paso 2
-- Cree la aplicación con Ionic:
+#### Paso 3
+Cree la aplicación con Ionic:
 ```
 $ ionic start proyectoTis2 blank --type=ionic-angular
 ```
