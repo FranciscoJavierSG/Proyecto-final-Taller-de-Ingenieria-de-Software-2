@@ -12,15 +12,16 @@ Asegúrese de tener *Node.js* instalado.
 
 #### Paso 2
 Luego, para instalar *Ionic* y *Cordova* en su computador utilice:
-
 ``` 
 $ npm install -g ionic cordova
 ```
+
 #### Paso 3
 Cree la aplicación con Ionic:
 ```
 $ ionic start proyectoTis2 blank --type=ionic-angular
 ```
+
 #### Plugins instalados:
 ```
 $ionic cordova plugin add cordova-plugin-telerik-imagepicker@2.3.3
